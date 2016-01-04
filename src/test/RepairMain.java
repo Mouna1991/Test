@@ -133,10 +133,10 @@ public class RepairMain {
 	         }
 
 	         System.out.println("******************************");
-	 	      System.out.println("You entered "+number+ " versions");
+	 	     System.out.println("You entered "+number+ " versions");
 	 	     System.out.println("******************************");
 	 	     System.out.println("STARTING THE AUTOMATIC REPAIR PROCESS");
-	 	      System.out.println("******************************");
+	 	     System.out.println("******************************");
 	    	  
 	}
 	   
