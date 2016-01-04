@@ -24,7 +24,7 @@ public class ScriptTest {
     baseUrl = "http://cse.unl.edu/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
-
+//MOUNA TEST
   @Test
   public void test() throws Exception {
     driver.get(baseUrl + "/~mouna/example.html");
