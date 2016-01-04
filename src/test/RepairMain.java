@@ -78,8 +78,9 @@ public class RepairMain {
 			e.printStackTrace();
 		}
 		
-		
-		 Result result = JUnitCore.runClasses(ScriptTest.class);
+		//path is /Users/mouna/Desktop/test.java
+
+		 Result result = JUnitCore.runClasses(test.class);
 	      for (Failure failure : result.getFailures()) {
 	         System.out.println(failure.toString());
 	      }
@@ -87,6 +88,8 @@ public class RepairMain {
 	      System.out.println("******************************");
 	      System.out.println("Test case passed for Version 1");
 	      System.out.println("******************************");
+	      System.out.println("Enter the list of commits leading to the next version");
+
 
 	   }
 	}
