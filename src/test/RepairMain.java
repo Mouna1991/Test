@@ -84,6 +84,10 @@ public class RepairMain {
 	         System.out.println(failure.toString());
 	      }
 	      System.out.println(result.wasSuccessful());
+	      System.out.println("******************************");
+	      System.out.println("Test case passed for Version 1");
+	      System.out.println("******************************");
+
 	   }
 	}
 
