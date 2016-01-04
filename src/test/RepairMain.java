@@ -91,13 +91,23 @@ public class RepairMain {
 	      System.out.println(result.wasSuccessful());
 	      if(result.wasSuccessful()){
 	    	  System.out.println("******************************");
-	 	      System.out.println("Test case passed for Version 1");
+	 	      System.out.println("Test case passed for Version 0");
 	 	      System.out.println("******************************");
 	      }
 		
 	    
 	      System.out.println("Enter the URLS of the next commits/versions and write END when you're done"); 
-	     
+	      
+	      /*
+	       *    http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.1/
+				http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.2/
+				http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.3/
+				http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.4/
+				http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.5/
+	       * 
+	       * 
+	       */
+	     int number=0; 
 	         try {
 	        	 Scanner scanner = new Scanner(System.in);
 	        	 BufferedWriter out = new BufferedWriter(new FileWriter("commits.txt"));
@@ -108,6 +118,7 @@ public class RepairMain {
 	            	 if(s.equals("END")){
 	            		 break; 
 	            	 }
+	            	 number++; 
 	            	 System.out.println(s);
 	            	 out.write(s); 
 	            	 out.write("\n"); 
@@ -121,7 +132,11 @@ public class RepairMain {
 	             System.out.println("Exception ");       
 	         }
 
-
+	         System.out.println("******************************");
+	 	      System.out.println("You entered "+number+ " versions");
+	 	     System.out.println("******************************");
+	 	     System.out.println("STARTING THE AUTOMATIC REPAIR PROCESS");
+	 	      System.out.println("******************************");
 	    	  
 	}
 	   
