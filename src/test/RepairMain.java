@@ -66,7 +66,7 @@ public class RepairMain {
 		
 		
 	          
-		File source = new File("/Users/mouna/Documents/Research/test/test.java");
+		File source = new File(input);
 		File dest = new File("/Users/mouna/Documents/Research/test/src/test/test.java");
 		 
 		String path="/Users/mouna/Documents/Research/test/src/test/"; 
@@ -85,10 +85,14 @@ public class RepairMain {
 	         System.out.println(failure.toString());
 	      }
 	      System.out.println(result.wasSuccessful());
-	      System.out.println("******************************");
-	      System.out.println("Test case passed for Version 1");
-	      System.out.println("******************************");
+	      if(result.wasSuccessful()){
+	    	  System.out.println("******************************");
+	 	      System.out.println("Test case passed for Version 1");
+	 	      System.out.println("******************************");
+	      }
+	   
 	      System.out.println("Enter the list of commits leading to the next version");
+	      
 
 
 	   }
