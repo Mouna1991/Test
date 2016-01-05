@@ -35,18 +35,23 @@ public class RepairMain {
 		
 		RepairTechnique tech= new RepairTechnique(); 
 		String input = null;
-		System.out.println("Input the path of the test case"); 
-		try{
-			BufferedReader br = 
-	                      new BufferedReader(new InputStreamReader(System.in));
-				
-			input=br.readLine(); 
-				
-			if(input!=null){
-				System.out.println(input);
-				
-			}
-			
+//		System.out.println("Input the path of the test case"); 
+//		try{
+//			BufferedReader br = 
+//	                      new BufferedReader(new InputStreamReader(System.in));
+//				
+//			input=br.readLine(); 
+//				
+//			if(input!=null){
+//				System.out.println(input);
+//				
+//			}
+		
+		
+		    System.out.println("**************VERIFICATION STEP***************************"); 
+		    System.out.println("**************RUNNING TEST 0 FOR VERSION 0****************"); 
+
+			input="/Users/mouna/Desktop/test.java"; 
 			String s =""; 
 			Charset charset = Charset.forName("US-ASCII");
 			Path file=Paths.get(input); 
@@ -70,9 +75,11 @@ public class RepairMain {
 			}
 			
 				
-		}catch(IOException io){
-			io.printStackTrace();
-		}	
+//		}
+		
+//		catch(IOException io){
+//			io.printStackTrace();
+//		}	
 		
 		
 	          
@@ -95,7 +102,6 @@ public class RepairMain {
 	         System.out.println(failure.toString());
 	      }
 	      int num= countLines("commits.txt"); 
-	        System.out.println("HEYYYYYYYYYY NUMBER: "+num);  
 	      System.out.println(result.wasSuccessful());
 	      if(result.wasSuccessful()){
 	    	  System.out.println("******************************");
@@ -104,8 +110,9 @@ public class RepairMain {
 	      }
 		
 	    
-	      System.out.println("Enter the URLS of the next commits/versions and write END when you're done"); 
-	      
+	    //  System.out.println("Enter the URLS of the next commits/versions and write END when you're done"); 
+		    System.out.println("**************RUNNING THE TEST AT THE LEVEL OF THE NEXT COMMITS**************"); 
+
 	      /*
 	       *    http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.1/
 		   *	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.2/
