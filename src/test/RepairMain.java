@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -138,8 +140,58 @@ public class RepairMain {
 	 	     System.out.println("STARTING THE AUTOMATIC REPAIR PROCESS");
 	 	     System.out.println("******************************");
 	    	  
+	 	     int counter=1; 
+	 	    
+	 	    
+	 	     while(counter<=number){
+	 	    	 source=dest; 
+	 	 	     String new_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
+	 	    	 dest = new File(new_file); 
+	 	 	    try {
+	 				Files.copy(source.toPath(),(new File(path + dest.getName())).toPath(),StandardCopyOption.REPLACE_EXISTING);
+	 			} catch (IOException e) {
+	 				// TODO Auto-generated catch block
+	 				e.printStackTrace();
+	 			}
+	 	    	 
+	 	 	    
+	 	 	    
+	 	 	  updateLine( new_file,  counter); 
+	 	 	    
+	 	 	    
+	 	 	    
+	 	    	 counter++; 
+	 	    	 
+	 	    	 
+	 	    	 
+	 	    	 
+	 	     }
+	 	     
 	}
-	   
+	private static void updateLine(String file_name, int counter) throws IOException {
+	    BufferedReader file = new BufferedReader(new FileReader(file_name));
+	    String line;
+	    String input = "";
+
+	    while ((line = file.readLine()) != null)
+	    {
+	    	 input += line + "\n";
+	    	 if (line.contains("public class")){
+	    		 String new_line= "public class test"+counter+" {" ; 
+	    		 input = input.replace(line, new_line );
+	    	 }
+	    }
+	       
+
+	    
+	    
+
+	    FileOutputStream os = new FileOutputStream(file_name);
+	    os.write(input.getBytes());
+
+	    file.close();
+	    os.close();
+	} 
 	}
 
 
