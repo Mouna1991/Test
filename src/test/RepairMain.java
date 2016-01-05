@@ -180,6 +180,8 @@ public class RepairMain {
 	    		 String new_line= "public class test"+counter+" {" ; 
 	    		 input = input.replace(line, new_line );
 	    	 }
+	    	 
+	    	 
 	    }
 	       
 
