@@ -108,7 +108,7 @@ public class RepairMain {
 		   *	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.3/
 		   *	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.4/
 		   *	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.5/
-	       * 
+	       * 	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv6.2.6/
 	       * 
 	       */
 	     int number=0; 
@@ -162,7 +162,18 @@ public class RepairMain {
 	 	 	  
 	 	 	updateLineClass( new_file,  counter); 	
 	 	 	UpdateCommitURL( LineIwant,  counter,  new_file);  
-	 	 	
+	 	 	String classname="test.test"+counter; 
+	 		
+	 	 	Class<?> act = null;
+			try {
+				act = Class.forName(classname);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 	 	JUnitCore junit = new JUnitCore();
+	 	 	Result res = junit.run(act);
+	 	 	 
 	 	   
 	 	     counter++; 
 	 	    	 
