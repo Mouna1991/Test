@@ -1,4 +1,5 @@
 package test;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -92,6 +94,8 @@ public class RepairMain {
 	      for (Failure failure : result.getFailures()) {
 	         System.out.println(failure.toString());
 	      }
+	      int num= countLines("commits.txt"); 
+	        System.out.println("HEYYYYYYYYYY NUMBER: "+num);  
 	      System.out.println(result.wasSuccessful());
 	      if(result.wasSuccessful()){
 	    	  System.out.println("******************************");
@@ -111,40 +115,40 @@ public class RepairMain {
 	       * 	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv6.2.6/
 	       * 	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv6.2.7/
 	       */
-	     int number=0; 
-	         try {
-	        	 Scanner scanner = new Scanner(System.in);
-	        	 BufferedWriter out = new BufferedWriter(new FileWriter("commits.txt"));
-	            
-	             while(scanner.hasNext()){
-	            	
-	            	 String s = scanner.next(); 
-	            	 if(s.equals("END")){
-	            		 break; 
-	            	 }
-	            	 number++; 
-	            	 System.out.println(s);
-	            	 out.write(s); 
-	            	 out.write("\n"); 
-	             }
-	             out.close();
-	           
-	            
-	         }
-	         catch (IOException e)
-	         {
-	             System.out.println("Exception ");       
-	         }
-
+//	     int number=0; 
+//	         try {
+//	        	 Scanner scanner = new Scanner(System.in);
+//	        	 BufferedWriter out = new BufferedWriter(new FileWriter("commits.txt"));
+//	            
+//	             while(scanner.hasNext()){
+//	            	
+//	            	 String s = scanner.next(); 
+//	            	 if(s.equals("END")){
+//	            		 break; 
+//	            	 }
+//	            	 number++; 
+//	            	 System.out.println(s);
+//	            	 out.write(s); 
+//	            	 out.write("\n"); 
+//	             }
+//	             out.close();
+//	           
+//	            
+//	         }
+//	         catch (IOException e)
+//	         {
+//	             System.out.println("Exception ");       
+//	         }
+	        
 	         System.out.println("******************************");
-	 	     System.out.println("You entered "+number+ " versions");
+	 	     System.out.println("You entered "+num+ " versions");
 	 	     System.out.println("******************************");
 	 	     System.out.println("STARTING THE AUTOMATIC REPAIR PROCESS");
 	 	     System.out.println("******************************");
 	    	  
 	 	     int counter=1; 
 	 	   
-	 	     while(counter<=number){
+	 	     while(counter<=num){
 	 	    	 source=dest; 
    	 	     String new_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
 	 	    	 dest = new File(new_file); 
@@ -173,6 +177,8 @@ public class RepairMain {
 			}
 			 Result result2 = JUnitCore.runClasses(act);
 		      for (Failure failure : result2.getFailures()) {
+			    System.out.println("******************************");
+
 		    	 System.out.println("Test case failed for Version "+counter);
 		         System.out.println(failure.toString());
 		          dest=tech.repair(new_file);
@@ -195,8 +201,28 @@ public class RepairMain {
 	 	     
 	}
 
-	
-	
+	/***************************************************************************/
+
+	public static int countLines(String filename) throws IOException {
+	    InputStream is = new BufferedInputStream(new FileInputStream(filename));
+	    try {
+	        byte[] c = new byte[1024];
+	        int count = 0;
+	        int readChars = 0;
+	        boolean empty = true;
+	        while ((readChars = is.read(c)) != -1) {
+	            empty = false;
+	            for (int i = 0; i < readChars; ++i) {
+	                if (c[i] == '\n') {
+	                    ++count;
+	                }
+	            }
+	        }
+	        return (count == 0 && !empty) ? 1 : count;
+	    } finally {
+	        is.close();
+	    }
+	}
 	/***************************************************************************/
 
 	private static void UpdateCommitURL(String LineIwant, int count, String new_file) throws IOException {
