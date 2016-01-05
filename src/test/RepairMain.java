@@ -109,7 +109,7 @@ public class RepairMain {
 		   *	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.4/
 		   *	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.5/
 	       * 	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv6.2.6/
-	       * 
+	       * 	http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv6.2.7/
 	       */
 	     int number=0; 
 	         try {
@@ -175,7 +175,7 @@ public class RepairMain {
 		      for (Failure failure : result2.getFailures()) {
 		    	 System.out.println("Test case failed for Version "+counter);
 		         System.out.println(failure.toString());
-		         dest=tech.repair();
+		          dest=tech.repair(new_file);
 		         
 		         
 		      }
