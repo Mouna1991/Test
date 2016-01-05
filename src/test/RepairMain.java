@@ -14,6 +14,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
@@ -160,16 +162,17 @@ public class RepairMain {
 	 	 	  
 	 	 	updateLineClass( new_file,  counter); 	
 	 	 	UpdateCommitURL( LineIwant,  counter,  new_file);  
-	 	 	    
-	 	 	    
+	 	 	
+	 	   
 	 	     counter++; 
 	 	    	 
-	 	    	 
-	 	    	 
+
 	 	    	 
 	 	     }
 	 	     
 	}
+
+	
 	
 	/***************************************************************************/
 
