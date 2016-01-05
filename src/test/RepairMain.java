@@ -156,7 +156,7 @@ public class RepairMain {
 	 	    	 
 	 	 	    
 	 	 	    
-	 	 	  updateLine( new_file,  counter); 
+	 	 	  updateLineClass( new_file,  counter); 
 	 	 	    
 	 	 	    
 	 	 	    
@@ -168,7 +168,7 @@ public class RepairMain {
 	 	     }
 	 	     
 	}
-	private static void updateLine(String file_name, int counter) throws IOException {
+	private static void updateLineClass(String file_name, int counter) throws IOException {
 	    BufferedReader file = new BufferedReader(new FileReader(file_name));
 	    String line;
 	    String input = "";
