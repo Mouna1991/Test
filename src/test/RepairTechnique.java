@@ -1,8 +1,11 @@
 package test;
 
+import java.io.File;
+
 public class RepairTechnique {
 
-	public void repair(){
-		
+	public File repair(){
+		File file = null; 
+		return file; 
 	}
 }

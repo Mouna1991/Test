@@ -31,7 +31,7 @@ public class RepairMain {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		
+		RepairTechnique tech= new RepairTechnique(); 
 		String input = null;
 		System.out.println("Input the path of the test case"); 
 		try{
@@ -171,8 +171,20 @@ public class RepairMain {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	 	 	JUnitCore junit = new JUnitCore();
-	 	 	Result res = junit.run(act);
+			 Result result2 = JUnitCore.runClasses(act);
+		      for (Failure failure : result2.getFailures()) {
+		    	 System.out.println("Test case failed for Version "+counter);
+		         System.out.println(failure.toString());
+		         dest=tech.repair();
+		         
+		         
+		      }
+		      System.out.println(result2.wasSuccessful());
+		      if(result2.wasSuccessful()){
+		    	  System.out.println("******************************");
+		 	      System.out.println("Test case passed for Version "+counter);
+		 	      System.out.println("******************************");
+		      }
 	 	 	 
 	 	   
 	 	     counter++; 
