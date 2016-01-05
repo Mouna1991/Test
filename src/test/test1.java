@@ -24,7 +24,7 @@ public class test1 {
 
   @Test
   public void test() throws Exception {
-    driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv1.2/index.php");
+driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.1/");
     driver.findElement(By.linkText("add new")).click();
     driver.findElement(By.name("firstname")).clear();
     driver.findElement(By.name("firstname")).sendKeys("James");

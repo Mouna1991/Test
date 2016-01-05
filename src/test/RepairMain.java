@@ -141,11 +141,10 @@ public class RepairMain {
 	 	     System.out.println("******************************");
 	    	  
 	 	     int counter=1; 
-	 	    
-	 	    
+	 	   
 	 	     while(counter<=number){
 	 	    	 source=dest; 
-	 	 	     String new_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
+   	 	     String new_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
 	 	    	 dest = new File(new_file); 
 	 	 	    try {
 	 				Files.copy(source.toPath(),(new File(path + dest.getName())).toPath(),StandardCopyOption.REPLACE_EXISTING);
@@ -154,13 +153,16 @@ public class RepairMain {
 	 				e.printStackTrace();
 	 			}
 	 	    	 
+	 	 	
+	 	 	  String LineIwant=GetCommitURL( counter); 
+	 	 	//  System.out.println("LINE:"+counter+" "+LineIwant); 
+	 	 	  
+	 	 	  
+	 	 	updateLineClass( new_file,  counter); 	
+	 	 	UpdateCommitURL( LineIwant,  counter,  new_file);  
 	 	 	    
 	 	 	    
-	 	 	  updateLineClass( new_file,  counter); 
-	 	 	    
-	 	 	    
-	 	 	    
-	 	    	 counter++; 
+	 	     counter++; 
 	 	    	 
 	 	    	 
 	 	    	 
@@ -168,6 +170,65 @@ public class RepairMain {
 	 	     }
 	 	     
 	}
+	
+	/***************************************************************************/
+
+	private static void UpdateCommitURL(String LineIwant, int count, String new_file) throws IOException {
+	    BufferedReader file = new BufferedReader(new FileReader(new_file));
+	    String line;
+	    String input = "";
+
+	    while ((line = file.readLine()) != null)
+	    {
+	    	 input += line + "\n";
+	    	 if (line.contains("driver.get")){
+	    		 String new_line= "driver.get("+"\""+LineIwant+"\""+");"; 
+	    		 input = input.replace(line, new_line );
+	    	 }
+	    	 
+	    	 
+	    }
+	       
+
+	    
+	    
+
+	    FileOutputStream os = new FileOutputStream(new_file);
+	    os.write(input.getBytes());
+
+	    file.close();
+	    os.close();
+	} 
+	
+	
+	
+	
+	/***************************************************************************/
+	private static String GetCommitURL(int count) throws IOException{
+		String lineIWant = null; 
+		FileInputStream fs= new FileInputStream("commits.txt");
+		BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+		for(int i = 1; i <= count; i++){
+			 lineIWant = br.readLine();
+			 if(i==count){
+				  
+				  return lineIWant; 
+			 }
+		}
+		
+		return lineIWant; 
+	}
+	
+	/***************************************************************************/
+
+	
+	
+	
+	
+	
+	
+	
+	
 	private static void updateLineClass(String file_name, int counter) throws IOException {
 	    BufferedReader file = new BufferedReader(new FileReader(file_name));
 	    String line;
