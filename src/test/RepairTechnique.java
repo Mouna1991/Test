@@ -9,13 +9,50 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+
 public class RepairTechnique {
 
-	public File repair(String new_file, String old_URL, String new_URL){
+	public File repair(String new_file, String old_URL, String new_URL) throws IOException{
 		
 
 		System.out.println("OLD_URL: "+old_URL); 
 		System.out.println("NEW_URL: "+new_URL);
+		
+		
+		org.jsoup.nodes.Document doc = Jsoup.connect(old_URL).get();
+		org.jsoup.nodes.Document doc2 = Jsoup.connect(new_URL).get();
+		
+		
+		
+		org.jsoup.nodes.Document docc = Jsoup.connect("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv1.2/").get();
+    	Element link = docc.select("a").first();
+
+    	String text = docc.body().text(); // "An example link"
+    	System.out.println("heyyy"+text); 
+    	String linkHref = link.attr("href"); // "http://example.com/"
+    	System.out.println("hey2"+linkHref); 
+    	String linkText = link.text(); // "example""
+    	System.out.println("hey3"+linkText); 
+    	String linkOuterH = link.outerHtml(); 
+    	System.out.println("hey3  "+linkOuterH); 
+    	    // "<a href="http://example.com"><b>example</b></a>"
+    	String linkInnerH = link.html(); // "<b>example</b>"; 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		File file = new File(new_file); 
 		Writer writer = null;
 

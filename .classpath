@@ -55,5 +55,6 @@
 	<classpathentry kind="lib" path="/Users/mouna/Documents/Research/test/selenium-2.48.2/libs/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="/Users/mouna/Documents/Research/test/selenium-2.48.2/selenium-java-2.48.2-srcs.jar"/>
 	<classpathentry kind="lib" path="/Users/mouna/Documents/Research/test/selenium-2.48.2/selenium-java-2.48.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mouna/Downloads/jsoup-1.8.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
