@@ -187,11 +187,32 @@ public class RepairMain {
 		}
 
 		counter=1; 
-		String old_file = null;
+		
 		while(counter<=num){ 
+			source=dest; 
+			String new_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
+			
+			dest = new File(new_file); 
+			try {
+				Files.copy(source.toPath(),(new File(path + dest.getName())).toPath(),StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
+			String LineIwant=GetCommitURL( counter); 
+			//  System.out.println("LINE:"+counter+" "+LineIwant); 
+
+
+			updateLineClass( new_file,  counter); 	
+			UpdateCommitURL( LineIwant,  counter,  new_file);  
+			String command = "javac "+new_file;
+
+			String output = executeCommand(command);
 
 			String classname="test.test"+counter; 
-			String new_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
+			
 			Class<?> act = null;
 			try {
 				act = Class.forName(classname);
@@ -207,8 +228,11 @@ public class RepairMain {
 				System.out.println("******************************");
 
 				System.out.println(failure.toString());
-				dest=tech.repair(new_file, old_file);
-
+				String new_URL=GetCommitURL(counter); 
+				String old_URL=GetCommitURL(counter-1);
+				
+				dest=tech.repair(new_file, old_URL, new_URL);
+				
 
 			}
 			System.out.println(result2.wasSuccessful());
@@ -217,7 +241,7 @@ public class RepairMain {
 				System.out.println("Test case passed for Version "+counter);
 				System.out.println("******************************");
 			}
-			 old_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
+			
 			counter++; 
 		}
 
