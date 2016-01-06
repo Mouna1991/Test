@@ -11,7 +11,11 @@ import java.io.Writer;
 
 public class RepairTechnique {
 
-	public File repair(String new_file){
+	public File repair(String new_file, String old_file){
+		System.out.println("old file:"+old_file); 
+		System.out.println("new file:"+new_file); 
+
+		
 		File file = new File(new_file); 
 		Writer writer = null;
 

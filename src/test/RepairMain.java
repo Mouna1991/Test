@@ -187,6 +187,7 @@ public class RepairMain {
 		}
 
 		counter=1; 
+		String old_file = null;
 		while(counter<=num){ 
 
 			String classname="test.test"+counter; 
@@ -206,7 +207,7 @@ public class RepairMain {
 				System.out.println("******************************");
 
 				System.out.println(failure.toString());
-				dest=tech.repair(new_file);
+				dest=tech.repair(new_file, old_file);
 
 
 			}
@@ -216,6 +217,7 @@ public class RepairMain {
 				System.out.println("Test case passed for Version "+counter);
 				System.out.println("******************************");
 			}
+			 old_file="/Users/mouna/Documents/Research/test/src/test/test"+counter+".java"; 
 			counter++; 
 		}
 
