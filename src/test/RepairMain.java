@@ -203,6 +203,8 @@ public class RepairMain {
 				System.out.println("******************************");
 
 				System.out.println("Test case failed for Version "+counter);
+				System.out.println("******************************");
+
 				System.out.println(failure.toString());
 				dest=tech.repair(new_file);
 
