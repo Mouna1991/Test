@@ -19,7 +19,7 @@ public class test1 {
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "https://search.yahoo.com/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
   }
 
   @Test

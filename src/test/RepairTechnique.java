@@ -69,7 +69,7 @@ public class RepairTechnique {
 			    
 			    }
 			   
-	System.out.println("**************** PROFILE ESTABLISHEMENT FOR UNLOCATED ELEMENT ****************"); 
+	System.out.println("--------------------PROFILE ESTABLISHEMENT FOR UNLOCATED ELEMENT-----------------"); 
 			    
 			    	  String linkHref = elem.attr("href"); // "http://example.com/"
 			     if(linkHref!=""){
