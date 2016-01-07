@@ -20,9 +20,40 @@ public class RepairTechnique {
 		System.out.println("******************FAILURE PROFILE ESTABLISHED******************"); 
 		System.out.println("OLD VERSION URL: "+old_URL); 
 		System.out.println("NEW VERSION URL: "+new_URL);
-		System.out.println("FAILURE DESCRIPTION: "+failure.toString());
-		System.out.println("*****************************************************************"); 
+		
 
+		String fail=failure.toString(); 
+		
+		
+		
+		int start=fail.indexOf("{"); 
+		int end=fail.indexOf("}"); 
+		fail=fail.substring(start, end+1);
+		
+		
+		String[] arr = fail.split(","); 
+		String method=arr[0]; 
+		String locator=arr[1];
+		start=fail.indexOf(":\"");
+		end=fail.indexOf("\","); 
+		
+		method=fail.substring(start, end); 
+		method=method.replace(":\"", ""); 
+		//System.out.println("METHOD==============>"+method); 
+		start=locator.indexOf(":\"");
+		end=locator.indexOf("\"}"); 
+		locator=locator.substring(start, end); 
+		locator=locator.replace(":\"", ""); 
+		
+		
+		
+		//System.out.println("LOCATOR==============>"+locator);  
+		 
+		System.out.println("FAILURE DESCRIPTION: Could not locate the element with locator====> \""+locator+ "\", using the technique"
+				+ "====> \""+ method+"\"");
+		System.out.println("*****************************************************************"); 
+		
+		
 		org.jsoup.nodes.Document doc = Jsoup.connect(old_URL).get();
 		org.jsoup.nodes.Document doc2 = Jsoup.connect(new_URL).get();
 		
@@ -69,4 +100,7 @@ public class RepairTechnique {
 		}
 		return file; 
 	}
+	
+	
+	
 }
