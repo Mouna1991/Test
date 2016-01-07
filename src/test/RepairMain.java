@@ -51,7 +51,7 @@ public class RepairMain {
 		System.out.println("**************VERIFICATION STEP***************************"); 
 		System.out.println("**************RUNNING TEST 0 FOR VERSION 0****************"); 
 		/*
-		 * Instructions: Save the initial test in the file test_temp
+		 * Instructions: Save the initial test in the file: test_temp
 		 * 
 		 * 
 		 */
