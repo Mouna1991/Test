@@ -18,7 +18,7 @@ public class RepairTechnique {
 
 	public File repair(String new_file, String old_URL, String new_URL, Failure failure) throws IOException{
 		
-		System.out.println("******************ESTABLISHMENT OF FAILURE PROFILE******************"); 
+		System.out.println("****************** FAILURE PROFILE ESTABLISHMENT ******************"); 
 		System.out.println("OLD VERSION URL: "+old_URL); 
 		System.out.println("NEW VERSION URL: "+new_URL);
 		
@@ -69,7 +69,7 @@ public class RepairTechnique {
 			    
 			    }
 			   
-	System.out.println("****************ESTABLISHEMENT OF UNLOCATED ELEMENT PROFILE****************"); 
+	System.out.println("**************** PROFILE ESTABLISHEMENT FOR UNLOCATED ELEMENT ****************"); 
 			    
 			    	  String linkHref = elem.attr("href"); // "http://example.com/"
 			     if(linkHref!=""){
