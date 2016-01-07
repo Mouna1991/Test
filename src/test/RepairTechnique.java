@@ -11,16 +11,18 @@ import java.io.Writer;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.junit.runner.notification.Failure;
 
 public class RepairTechnique {
 
-	public File repair(String new_file, String old_URL, String new_URL) throws IOException{
+	public File repair(String new_file, String old_URL, String new_URL, Failure failure) throws IOException{
 		
+		System.out.println("******************FAILURE PROFILE ESTABLISHED******************"); 
+		System.out.println("OLD VERSION URL: "+old_URL); 
+		System.out.println("NEW VERSION URL: "+new_URL);
+		System.out.println("FAILURE DESCRIPTION: "+failure.toString());
+		System.out.println("*****************************************************************"); 
 
-		System.out.println("OLD_URL: "+old_URL); 
-		System.out.println("NEW_URL: "+new_URL);
-		
-		
 		org.jsoup.nodes.Document doc = Jsoup.connect(old_URL).get();
 		org.jsoup.nodes.Document doc2 = Jsoup.connect(new_URL).get();
 		

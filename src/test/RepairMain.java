@@ -227,11 +227,11 @@ public class RepairMain {
 				System.out.println("Test case failed for Version "+counter);
 				System.out.println("******************************");
 
-				System.out.println(failure.toString());
+				//System.out.println(failure.toString());
 				String new_URL=GetCommitURL(counter); 
 				String old_URL=GetCommitURL(counter-1);
 				
-				dest=tech.repair(new_file, old_URL, new_URL);
+				dest=tech.repair(new_file, old_URL, new_URL, failure);
 				
 
 			}
