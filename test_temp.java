@@ -19,7 +19,7 @@ public class TestTemp {
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "http://cse.unl.edu/";
-    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
