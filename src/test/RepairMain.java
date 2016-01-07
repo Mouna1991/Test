@@ -50,8 +50,12 @@ public class RepairMain {
 
 		System.out.println("**************VERIFICATION STEP***************************"); 
 		System.out.println("**************RUNNING TEST 0 FOR VERSION 0****************"); 
-
-		input="/Users/mouna/Desktop/test.java"; 
+		/*
+		 * Instructions: Save the initial test in the file test_temp
+		 * 
+		 * 
+		 */
+		input="/Users/mouna/Documents/Research/test/test_temp.java"; 
 		String s =""; 
 		Charset charset = Charset.forName("US-ASCII");
 		Path file=Paths.get(input); 
@@ -94,7 +98,13 @@ public class RepairMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		String StartFile="/Users/mouna/Documents/Research/test/src/test/test.java";
+		
+		updateLineClass2(StartFile);
+		ChangePackageName(StartFile); 
+		String command = "javac "+StartFile;
+		//
+		String output = executeCommand(command);
 		//path is /Users/mouna/Desktop/test.java
 
 		Result result = JUnitCore.runClasses(test.class);
@@ -174,9 +184,9 @@ public class RepairMain {
 
 			updateLineClass( new_file,  counter); 	
 			UpdateCommitURL( LineIwant,  counter,  new_file);  
-			String command = "javac "+new_file;
+			 command = "javac "+new_file;
 
-			String output = executeCommand(command);
+			 output = executeCommand(command);
 
 
 
@@ -207,9 +217,9 @@ public class RepairMain {
 
 			updateLineClass( new_file,  counter); 	
 			UpdateCommitURL( LineIwant,  counter,  new_file);  
-			String command = "javac "+new_file;
+			String com = "javac "+new_file;
 
-			String output = executeCommand(command);
+			String out = executeCommand(com);
 
 			String classname="test.test"+counter; 
 			
@@ -379,6 +389,64 @@ public class RepairMain {
 		file.close();
 		os.close();
 	} 
+	/***************************************************************************/
+
+	private static void updateLineClass2(String file_name) throws IOException {
+		BufferedReader file = new BufferedReader(new FileReader(file_name));
+		String line;
+		String input = "";
+
+		while ((line = file.readLine()) != null)
+		{
+			input += line + "\n";
+			if (line.contains("public class")){
+				String new_line= "public class test"+" {" ; 
+				input = input.replace(line, new_line );
+			}
+
+
+		}
+
+
+
+
+
+		FileOutputStream os = new FileOutputStream(file_name);
+		os.write(input.getBytes());
+
+		file.close();
+		os.close();
+	} 
+	
+	/***************************************************************************/
+
+	private static void ChangePackageName(String file_name) throws IOException {
+		BufferedReader file = new BufferedReader(new FileReader(file_name));
+		String line;
+		String input = "";
+
+		while ((line = file.readLine()) != null)
+		{
+			input += line + "\n";
+			if (line.contains("com.example.tests")){
+				String new_line= "package test;" ; 
+				input = input.replace(line, new_line );
+			}
+
+
+		}
+
+
+
+
+
+		FileOutputStream os = new FileOutputStream(file_name);
+		os.write(input.getBytes());
+
+		file.close();
+		os.close();
+	} 
+	
 }
 
 
