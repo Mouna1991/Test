@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class test1 {
+public class test {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -19,12 +19,12 @@ public class test1 {
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "https://search.yahoo.com/";
-    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
   }
 
   @Test
   public void test() throws Exception {
-driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.5/index.php");
+    driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv1.2/index.php");
     driver.findElement(By.linkText("add new")).click();
     driver.findElement(By.name("firstname")).clear();
     driver.findElement(By.name("firstname")).sendKeys("James");

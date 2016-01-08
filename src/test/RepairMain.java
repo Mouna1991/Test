@@ -184,9 +184,9 @@ public class RepairMain {
 
 			updateLineClass( new_file,  counter); 	
 			UpdateCommitURL( LineIwant,  counter,  new_file);  
-			 command = "javac "+new_file;
-
-			 output = executeCommand(command);
+//			 command = "javac "+new_file;
+//
+//			 output = executeCommand(command);
 
 
 
@@ -219,7 +219,7 @@ public class RepairMain {
 			UpdateCommitURL( LineIwant,  counter,  new_file);  
 			String com = "javac "+new_file;
 
-			String out = executeCommand(com);
+			 output = executeCommand(com);
 
 			String classname="test.test"+counter; 
 			
